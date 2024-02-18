@@ -2,28 +2,31 @@ package com.uce.moviles.logic.usercases.nobel
 
 import android.util.Log
 import com.uce.moviles.data.network.endpoints.nobel.NobelPrizeEndPoint
+import com.uce.moviles.data.network.entities.nobel.NobelPrize
 import com.uce.moviles.data.network.entities.nobel.NobelPrizeX
+import com.uce.moviles.data.network.repository.KtorClient
 import com.uce.moviles.data.network.repository.RetrofitBase
 import com.uce.moviles.ui.core.Constants
+import io.ktor.client.call.body
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.isSuccess
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetAllNobelPrizesUserCase {
-
+    private val ktorClient:KtorClient = KtorClient()
     suspend fun invoke(limit: Int): Flow<Result<List<NobelPrizeX>>> = flow {
 
         var result: Result<List<NobelPrizeX>>? = null
         var newLimit = limit
 
-        val baseService = RetrofitBase.getNobelPrizesConnection()
-        val service = baseService.create(NobelPrizeEndPoint::class.java)
-
         while (newLimit < 6) {
-            val call = service.getAllNobelPrizes(newLimit)
+
+            val call: HttpResponse = ktorClient.getAllNobelPrizes(newLimit)
             try {
-                if (call.isSuccessful) {
-                    val a = call.body()!!
+                if (call.status.isSuccess()) {
+                    val a = call.body<NobelPrize>()
                     val nobelPrizes = a.nobelPrizes
                     result = Result.success(nobelPrizes)
                 } else {

@@ -6,13 +6,14 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import com.uce.moviles.core.My_Application
 import com.uce.moviles.databinding.ActivityMainBinding
+import com.uce.moviles.logic.usercases.jikan.JikanAnimeUserCase
 import com.uce.moviles.logic.usercases.local.LoginUserCase
 import com.uce.moviles.ui.core.Constants
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var ktorClient: JikanAnimeUserCase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,10 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         initListeners()
 
+
     }
 
     private fun initListeners() {
         binding.btnLogin.setOnClickListener {
+
             val check = LoginUserCase(
                 My_Application.getConnectionDB()!!
             ).checkLogin(

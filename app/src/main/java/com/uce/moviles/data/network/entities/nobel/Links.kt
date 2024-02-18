@@ -1,5 +1,8 @@
 package com.uce.moviles.data.network.entities.nobel
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Links(
     val first: String,
     val last: String,

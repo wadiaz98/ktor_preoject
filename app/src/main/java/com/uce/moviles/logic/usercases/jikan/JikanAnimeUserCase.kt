@@ -10,15 +10,13 @@ import com.uce.moviles.ui.core.Constants
 import java.lang.Exception
 
 class JikanAnimeUserCase() {
-    private val ktorClien = KtorClient
      fun getResponse(nameAnime: Int): FullInfoAnimeLG {
         var infoAnime = FullInfoAnimeLG()
 
          try {
-
             val baseService = RetrofitBase.getRetrofitJikanConnection()
             val service = baseService.create(AnimeEndPoint::class.java)
-             val call = service.getAnimeFullInfo(nameAnime)
+            val call = service.getAnimeFullInfo(nameAnime)
 
             if (call.isSuccessful) {
                 val a = call.body()!!

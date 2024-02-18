@@ -3,11 +3,12 @@ package com.uce.moviles.logic.usercases.jikan
 import android.util.Log
 import com.uce.moviles.data.network.endpoints.anime.TopAnimesEndpoint
 import com.uce.moviles.data.network.entities.jikan.top.TopAnime
+import com.uce.moviles.data.network.repository.KtorClient
 import com.uce.moviles.data.network.repository.RetrofitBase
 import com.uce.moviles.ui.core.Constants
 
 class JikanGetTopAnimesUserCase {
-
+    private lateinit var ktorClient: KtorClient
     suspend fun getResponse(): Result<TopAnime> {
         var result: Result<TopAnime>? = null
         var infoAnime = TopAnime()
@@ -32,4 +33,6 @@ class JikanGetTopAnimesUserCase {
 
         return result!!
     }
+
+
 }
