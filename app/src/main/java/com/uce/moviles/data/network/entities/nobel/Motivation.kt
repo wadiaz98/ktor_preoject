@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Motivation(
-    val en: String,
-    val no: String = "",
-    val se: String
+    val en: String? = null,
+    val no: String? = null,
+    val se: String? = null
 )

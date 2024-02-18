@@ -19,7 +19,7 @@ import kotlinx.serialization.json.Json
 import retrofit2.Response
 import retrofit2.http.Query
 
-class KtorClient {
+object KtorClient {
     private val client = HttpClient(OkHttp){
         defaultRequest{url("http://api.nobelprize.org/2.1/") }
 

@@ -19,10 +19,10 @@ class NobelPrizeAdapter :
         private var binding: NobelItemsBinding = NobelItemsBinding.bind(view)
 
         fun render(item: NobelPrizeX) {
-            binding.nobelImg.load("https://openclipart.org/image/800px/167281")
+            binding.nobelImg.load("https://cdn-icons-png.flaticon.com/512/2132/2132055.png")
             binding.nobelYear.text = item.awardYear
             binding.nobelCategory.text = item.category.en
-            binding.nobelName.text = item.laureates[0].fullName?.en
+            binding.nobelName.text = item.laureates!![0].fullName?.en
         }
     }
 

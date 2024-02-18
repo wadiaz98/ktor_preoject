@@ -8,7 +8,7 @@ data class NobelPrizeX(
     val category: Category,
     val categoryFullName: CategoryFullName,
     val dateAwarded: String,
-    val laureates: List<Laureate>,
+    val laureates: List<Laureate>?=null,
     val links: List<LinkX>,
     val prizeAmount: Int,
     val prizeAmountAdjusted: Int

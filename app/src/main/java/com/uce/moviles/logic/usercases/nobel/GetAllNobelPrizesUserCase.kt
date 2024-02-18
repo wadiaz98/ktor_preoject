@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetAllNobelPrizesUserCase {
-    private val ktorClient:KtorClient = KtorClient()
+    private val ktorClient:KtorClient = KtorClient
     suspend fun invoke(limit: Int): Flow<Result<List<NobelPrizeX>>> = flow {
 
         var result: Result<List<NobelPrizeX>>? = null
@@ -28,7 +28,7 @@ class GetAllNobelPrizesUserCase {
                 if (call.status.isSuccess()) {
                     val a = call.body<NobelPrize>()
                     val nobelPrizes = a.nobelPrizes
-                    result = Result.success(nobelPrizes)
+                    result = Result.success(nobelPrizes!!)
                 } else {
                     val msg = "Error en el llamado a la API de Jikan"
                     result = Result.failure(Exception(msg))

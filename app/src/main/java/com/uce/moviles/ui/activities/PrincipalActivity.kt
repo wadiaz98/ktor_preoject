@@ -13,6 +13,13 @@ import com.uce.moviles.ui.viewmodels.PrincipalViewModels
 
 class PrincipalActivity : AppCompatActivity() {
 
+    //Integrantes:
+    /*
+    Castillo Conde Serghy Omar
+    Diaz Cordova Willan Alexander
+    Hidalgo Beltran Reymon Alexander
+     */
+
     private lateinit var binding: ActivityPrincipalBinding
     private val adapter = NobelPrizeAdapter()
     private val viewModel: PrincipalViewModels by viewModels()
